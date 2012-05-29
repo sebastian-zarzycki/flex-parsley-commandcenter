@@ -1,0 +1,29 @@
+public var commandCenter:CommandCenter; 
+
+private function launchSequence():void
+{
+	commandCenter.startSequence();
+	commandCenter.addCommand(AsyncCommand, getProofEvent);
+	commandCenter.addCommand(SimpleCommand);
+	commandCenter.addEventListener(CommandCenterEvent.COMMAND_COMPLETED, sequenceStepCompleteHandler);
+	commandCenter.addEventListener(CommandCenterEvent.ALL_COMPLETED, sequenceCompleteHandler);
+                   
+	// you can use it elsewhere
+	var commandCount:Number = commandCenter.commandCount;
+
+	commandCenter.execute();    
+}  
+
+
+private function sequenceStepCompleteHandler(event:CommandCenterEvent):void
+{
+	// update progress here, you can use completedCommandCount and totalCommandCount from event
+}
+	
+private function sequenceCompleteHandler(event:CommandCenterEvent):void
+{
+	commandCenter.removeEventListener(CommandCenterEvent.COMMAND_COMPLETED, sequenceStepCompleteHandler);
+	commandCenter.removeEventListener(CommandCenterEvent.ALL_COMPLETED, sequenceCompleteHandler);
+
+	// do something here, because it's all completed!
+} 
