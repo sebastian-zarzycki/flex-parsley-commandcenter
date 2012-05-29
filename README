@@ -1,0 +1,17 @@
+This is a simple wrapper over Parsley 3 Command/Task Framework functionality.  
+   
+Parsley 3 is Flex/Flash microframework and DI container by Jens Halm @ SpiceFactory
+http://www.spicefactory.org/parsley/
+
+If you want a more standalone parallel/sequence command dispatcher - this is for you.        
+If you want to be notified about each command completion - this is also for you.         
+
+I've created it, because standard Parsley 3 Command framework does not support notification after each command completion out of the box. Such functionality is sometimes desired, i.e. when you want to track progress and present it in some way (like preloader). I also wanted more streamlined command sequence creation and execution, to somehow mimic Cairngorm 3 Task library.  With CommandCenter you no longer need Cairngorm 3 Task, all the functionality is there for you.
+
+You can programmatically create command sequence/seta and pass data as if they were launched the usual way from context. CommandCenter can be another reusable managed object in your Parsley Context - inject it where you want it. Keep in mind that your Commands have to extend provided Command class - it contains basic notification functionality. You can notify about whether the completion was successful or not and pass additional message (it could even be result of your command).         
+                              
+Please check out the usage.txt file to learn about how to use it.     
+Feel free to modify it and tailor to your needs - I just needed this functionality, you can add your own.
+
+Sebastian Zarzycki
+<sebastian.zarzycki@gmail.com>
