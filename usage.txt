@@ -1,3 +1,4 @@
+// this should be either injected by Parsley, or created manually, but then you have to pass Context to it
 public var commandCenter:CommandCenter; 
 
 private function launchSequence():void
